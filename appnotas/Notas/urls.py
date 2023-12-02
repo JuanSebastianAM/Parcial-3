@@ -10,5 +10,5 @@ urlpatterns = [
     path('detalle/<id>/',views.detalleNotas, name='detalleNotas'),
     path('editar/<id>/',views.editarNotas, name='editarNotas'),
     path('borrar/<id>/',views.eliminarNotas, name='eliminarNotas'),
-    path('ver/<id>/',views.verNotas, name='verNotas')
+    path('ver/<int:nota_id>/', views.verNotas, name='verNotas'),
 ]

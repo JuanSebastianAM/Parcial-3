@@ -1,4 +1,4 @@
-from django.shortcuts import redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from django.core.paginator import Paginator
@@ -40,21 +40,26 @@ def detalleNotas(request, id):
 
 # Vista principal de Gestión de Notas
 def gestionNotas(request):
-    #Consultar Notas
-    Nota_list = Nota.objects.all()
-    #Configurar paginación cada 10 Notas
+    
+    # Consultar Notas y ordenar por fecha de más nueva a más vieja
+    
+    Nota_list = Nota.objects.all().order_by('fecha','id')
+    
+    # Configurar paginación cada 10 Notas
     paginator = Paginator(Nota_list, 10)
 
-    #Obtener página
-    page_number = request.GET.get('page',0)
+    # Obtener página
+    page_number = request.GET.get('page', 0)
     page_obj = paginator.get_page(page_number)
 
-    #Obtener el template
+    # Obtener el template
     template = loader.get_template("gestionNotas.html")
-    #Agregar el contexto
+
+    # Agregar el contexto
     context = {"page_obj": page_obj}
-    #Retornar respuesta http
-    return HttpResponse(template.render(context,request))
+
+    # Retornar respuesta http
+    return HttpResponse(template.render(context, request))
 
 # Vista para crear Notas
 def crearNotas(request):
@@ -109,12 +114,8 @@ def eliminarNotas(request,id):
     context = {}
     #Retornar respuesta http
     return HttpResponse(template.render(context,request))
+   
 
-def verNotas(request,id):
-    
-    template =loader.get_template("verNotas.html")
-    obj = get_object_or_404(Nota, id = id)
-    if request.method == "POST":
-        return redirect('gestionNotas')
-    context = {}
-    return HttpResponse(template.render(context,request))
+def verNotas(request, nota_id):  # Debe coincidir con el nombre en la URL
+    nota = get_object_or_404(Nota, id=nota_id)
+    return render(request, 'verNotas.html', {'nota': nota})

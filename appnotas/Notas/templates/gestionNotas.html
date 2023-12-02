@@ -26,16 +26,15 @@
       {% for Nota in page_obj %}
       <tr>
         <th scope="row">{{ Nota.id }}</th>
-        <td>{{ Nota.Titulo|upper }}</td>
+        <td>{{ Nota.Titulo|upper}}</td>
         <td>{{ Nota.fecha }}</td>
         <td>
           <a type="button-sm" class="btn btn-sm btn-secondary" href="{% url 'verNotas' Nota.id %}">Ver</a>
           <a type="button-sm" class="btn btn-sm btn-primary" href="{% url 'editarNotas' Nota.id %}">Editar</a>
-            <a type="button-sm" class="btn btn-sm btn-danger" href="{% url 'eliminarNotas' Nota.id %}">Borrar</a>
-            
+          <a type="button-sm" class="btn btn-sm btn-danger" href="{% url 'eliminarNotas' Nota.id %}">Borrar</a>
         </td>
       </tr>
-      {% endfor %}
+    {% endfor %}
     </tbody>
   </table>
 
