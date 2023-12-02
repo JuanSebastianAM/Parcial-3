@@ -16,9 +16,9 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Titulo</th>
-        <th scope="col">Nota</th>
+        <th scope="col">Fecha</th>
         <th scope="col">Acciones</th>
-        <th scope="col">Fecha Creación</th>
+        
         
       </tr>
     </thead>
@@ -26,8 +26,8 @@
       {% for Nota in page_obj %}
       <tr>
         <th scope="row">{{ Nota.id }}</th>
-        <td>{{ Nota.titulo|upper }}</td>
-        <td>{{ Nota.fecha_creacion }}</td>
+        <td>{{ Nota.Titulo|upper }}</td>
+        <td>{{ Nota.fecha }}</td>
         <td>
           <a type="button-sm" class="btn btn-sm btn-secondary" href="{% url 'verNotas' Nota.id %}">Ver</a>
           <a type="button-sm" class="btn btn-sm btn-primary" href="{% url 'editarNotas' Nota.id %}">Editar</a>

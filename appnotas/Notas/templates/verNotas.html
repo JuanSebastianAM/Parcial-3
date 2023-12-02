@@ -7,10 +7,22 @@
 
 {% block content %} 
 <h1 class="display-3" id="title">Ver nota</h1>
-<form method="POST">
-   
-    <a href="{% url 'gestionNotas' %}"  class="btn btn-danger" >Volver</a>
-</form> 
-
+<thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Nota</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for Nota in page_obj %}
+    <tr>
+      <th scope="row">{{ Nota.id }}</th>
+      <td>{{ Nota.Titulo|upper }}</td>
+      <td>{{ Nota.fecha }}</td>
+    </tr>
+    {% endfor %}
+    <a href="{% url 'gestionNotas' %}"  class="btn btn-primary" >Volver </a>
+  </tbody>
 
 {% endblock content%}

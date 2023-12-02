@@ -14,10 +14,10 @@
       {% for Nota in page_obj %}
       <div class="col col-sm">
         <div class="card">
-            <span class="badge rounded-pill text-bg-info estado_label">{{ producto.ref_estado.estado }}</span>
+            <span class="badge rounded-pill text-bg-info estado_label">{{ Nota.Titulo }}</span>
             <div class="card-body">
-              <h5 class="card-title">{{ Nota.titulo|upper }}</h5>
-              <p class="card-text">{{ Nota.Numero}}</p>
+              <h5 class="card-title">{{ Nota.Titulo|upper }}</h5>
+              <p class="card-text">{{ Nota.fecha}}</p>
             </div>
           </div>
       </div>
