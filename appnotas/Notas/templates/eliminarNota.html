@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %} 
+<title>eliminarNota</title>
+{% endblock extrahead%}
+
+{% block content %} 
+<h1 class="display-3" id="title">Eliminar Nota</h1>
+<p>Elimine los datos de la Nota</p>
+<form method="POST">
+    <!-- Security token by Django -->
+    {% csrf_token %}
+    Esta seguro de eliminar esta Nota?
+    <input type="submit" value="Si"  class="btn btn-success"  />
+    <a href="{% url 'gestionNotas' %}"  class="btn btn-danger" >Cancel </a>
+</form> 
+
+
+{% endblock content%}

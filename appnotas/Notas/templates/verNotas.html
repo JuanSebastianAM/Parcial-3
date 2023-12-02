@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %} 
+<title>VerNota</title>
+{% endblock extrahead%}
+
+{% block content %} 
+<h1 class="display-3" id="title">Ver nota</h1>
+<form method="POST">
+   
+    <a href="{% url 'gestionNotas' %}"  class="btn btn-danger" >Volver</a>
+</form> 
+
+
+{% endblock content%}
